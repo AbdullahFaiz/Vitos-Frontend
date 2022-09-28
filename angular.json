@@ -7,7 +7,7 @@
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
-          "style": "sass"
+          "style": "scss"
         }
       },
       "root": "",
@@ -22,15 +22,30 @@
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
-            "inlineStyleLanguage": "sass",
+            "inlineStyleLanguage": "scss",
             "assets": [
               "src/favicon.ico",
               "src/assets"
             ],
             "styles": [
-              "src/styles.sass"
+              "src/styles.scss",
+              "src/assets/organi/css/bootstrap.min.css",
+              "src/assets/organi/css/font-awesome.min.css",
+              "src/assets/organi/css/elegant-icons.css",
+              "src/assets/organi/css/nice-select.css",
+              "src/assets/organi/css/slicknav.min.css",
+              "src/assets/organi/css/style.css"
             ],
-            "scripts": []
+            "scripts": [
+              "src/assets/organi/js/jquery-3.3.1.min.js",
+              "src/assets/organi/js/bootstrap.min.js",
+              "src/assets/organi/js/jquery.nice-select.min.js",
+              "src/assets/organi/js/jquery-ui.min.js",
+              "src/assets/organi/js/jquery.slicknav.js",
+              "src/assets/organi/js/mixitup.min.js",
+              "src/assets/organi/js/owl.carousel.min.js",
+              "src/assets/organi/js/main.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -90,13 +105,13 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.spec.json",
             "karmaConfig": "karma.conf.js",
-            "inlineStyleLanguage": "sass",
+            "inlineStyleLanguage": "scss",
             "assets": [
               "src/favicon.ico",
               "src/assets"
             ],
             "styles": [
-              "src/styles.sass"
+              "src/styles.scss"
             ],
             "scripts": []
           }
