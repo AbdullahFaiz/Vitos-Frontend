@@ -4,7 +4,8 @@
         <div class="row">
             <div class="col-lg-12 text-center">
                 <div class="breadcrumb__text">
-                    <h2>Login</h2>
+                    <h2 *ngIf="userlogged">Login</h2>
+                    <h2 *ngIf="!userlogged">Registration</h2>
 
                 </div>
             </div>
@@ -14,8 +15,13 @@
 <!-- Breadcrumb Section End -->
 
 <!-- Login Section Begin -->
-<section class="shoping-cart spad">
+<section  *ngIf="userlogged" class="shoping-cart spad">
     <div class="container">
+        <div class="row">
+            <div style="text-align: center;" class="col-sm-12">
+                <a style="color: #28b0d9;" class="hh" (click)="onclickLoggedUser()">Don't have an account. Register</a>
+            </div>
+        </div>
         <div class="row">
             <div class="col-lg-2">
             </div>
@@ -24,14 +30,14 @@
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="checkout__input">
-                            <p>Username (Email)<span>*</span></p>
-                            <input type="email" [(ngModel)]="UserNameEmail" (change)="checkCustomerByEmail()" [readOnly]="disabledForm">
+                            <p>Contact No<span>*</span></p>
+                            <input type="number" [(ngModel)]="contactNo" [readOnly]="disabledForm">
                         </div>
                     </div>
                     <div class="col-lg-6">
                         <div class="checkout__input">
                             <p>Account Password<span>*</span></p>
-                            <input type="password" [(ngModel)]="password" (change)="loginSubmit()" [readOnly]="disabledForm">
+                            <input type="password" [(ngModel)]="password" [readOnly]="disabledForm">
                             <p *ngIf="passwordInvalid && userExist"><span>Password Doesn't Match for registered User</span></p>
 
                         </div>
@@ -59,3 +65,110 @@
     </div>
 </section>
 <!-- Login Section End -->
+
+<!-- Registration Section Begin -->
+<section *ngIf="!userlogged" class="shoping-cart spad">
+   
+    <div class="container">
+        <div class="row">
+            <div style="text-align: center;" class="col-sm-12">
+                <a style="color: #28b0d9;"  class="hh" (click)="onclickLoggedUser()">Already have account. LOGIN</a>
+            </div>
+        </div>
+        <form class="form-sample" [formGroup]="customerForm">
+
+            <div class="row">
+                <div class="col-lg-2">
+                </div>
+                <div class="col-lg-8">
+
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="checkout__input">
+                                <p>Contact No<span>*</span></p>
+                                <input type="number" formControlName="contactNo">
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="checkout__input">
+                                <p>Account Password<span>*</span></p>
+                                <input type="password" formControlName="password">
+
+                            </div>
+                        </div>
+                    </div>
+                    
+
+
+                </div>
+                <div class="col-lg-2">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-2">
+                </div>
+                <div class="col-lg-8">
+
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="checkout__input">
+                                <p>Name<span>*</span></p>
+                                <input type="text" formControlName="name">
+                                </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="checkout__input">
+                                <p>Address<span>*</span></p>
+                                <input type="text" formControlName="address">
+                                
+                            </div>
+                        </div>
+                    </div>
+                    
+
+
+                </div>
+                <div class="col-lg-2">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-2">
+                </div>
+                <div class="col-lg-8">
+
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="checkout__input">
+                                <p>Date of Birth<span>*</span></p>
+                                <input type="date" formControlName="dob">
+                                </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="checkout__input">
+                                <p>Email<span>*</span></p>
+                                <input type="email" formControlName="email">
+                                </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-3">
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="checkout__input">
+                                <button type="button" class="site-btn" style="width: 100% !important;" (click)="registerCustomer();">Register</button>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                        </div>
+
+                    </div>
+
+
+                </div>
+                <div class="col-lg-2">
+                </div>
+            </div>
+        </form>
+    </div>
+</section>
+<!-- Registration Section End -->

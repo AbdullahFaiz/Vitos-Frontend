@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { throwError } from 'rxjs';
 // import { catchError} from 'rxjs/operators';
 import { _throw } from 'rxjs/observable/throw';
-import { LocalStorageService } from '../../common/local-storage/local-storage.service';
+import { LocalStorageService } from '../common/local-storage/local-storage.service';
 
 
 
@@ -26,7 +26,7 @@ export class CustomerLoginService {
         ) { }
         
     //api URL
-    apiUrl = this.localStorageService.getApiServerUrl()+"/customer";
+    apiUrl = this.localStorageService.getApiServerUrl()+"/user";
 
     // HTTP request error handling
     private handleError(error: HttpErrorResponse) {
@@ -50,6 +50,13 @@ export class CustomerLoginService {
     logout() {
         this.localStorageService.removeLocalStorageData();
         this.router.navigate(['/login']);
+    }
+
+    //register user
+    register(customer : any){
+        return this.httpClient.post(this.apiUrl, customer, this.httpOptions).pipe(
+            catchError(this.handleError)
+        );
     }
 
 }

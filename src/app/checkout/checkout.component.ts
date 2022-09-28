@@ -467,7 +467,7 @@ export class CheckoutComponent {
   //           let emptyCartDetails = [];
   //           this.cartService.setCartData(emptyCartDetails);
   //         }else{
-  //           let redirectUrl = '/shop/landing';
+  //           let redirectUrl = '/landing';
   //           console.log("Router");
   //           setTimeout(() => { this.router.navigate([redirectUrl]) }, 1000);
   //           let emptyCartDetails = [];

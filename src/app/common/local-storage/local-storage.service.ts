@@ -33,5 +33,9 @@ export class LocalStorageService {
     getData():any{
         return JSON.parse(window.localStorage.getItem('data'));
     }
+    // Remove storage data
+    public removeLocalStorageData() {
+        window.localStorage.removeItem('data');
+    }
     
 }

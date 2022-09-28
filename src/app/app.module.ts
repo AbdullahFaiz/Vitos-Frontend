@@ -5,16 +5,23 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { CartComponent } from './cart/cart.component';
 import { CartService } from './cart/cart.service';
+import { CheckoutComponent } from './checkout/checkout.component';
 import { CheckoutService } from './checkout/checkout.service';
 import { LocalStorageService } from './common/local-storage/local-storage.service';
+import { CustomerLoginComponent } from './customer-login/customer-login.component';
+import { CustomerLoginService } from './customer-login/customer-login.service';
 import { LandingComponent } from './landing/landing.component';
 import { LandingService } from './landing/landing.service';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LandingComponent
+    LandingComponent,
+    CartComponent,
+    CheckoutComponent,
+    CustomerLoginComponent
   ],
   imports: [
     BrowserModule,
@@ -27,7 +34,8 @@ import { LandingService } from './landing/landing.service';
     LocalStorageService,
     CartService,
     CheckoutService,
-    LandingService
+    LandingService,
+    CustomerLoginService
   ],
   bootstrap: [AppComponent]
 })

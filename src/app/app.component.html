@@ -4,24 +4,17 @@
         <div class="row ">
             <div class="col-lg-3">
                 <div class="header__logo">
-                    <a routerLink="/shop/landing"><img style="max-width: 50%;" src="/assets/images/logo.png" alt=""></a>
+                    <a routerLink="/landing"><img style="max-width: 50%;" src="/assets/images/logo.png" alt=""></a>
                 </div>
             </div>
             <div class="col-lg-6">
                 <nav class="header__menu">
-                    <ul>
-                        <li [class.active]="url === '/shop/landing'"><a routerLink="/shop/landing" (click)="toggleNav('/shop/landing')">Home</a></li>
-                        <li [class.active]="url === '/shop/cart'"><a routerLink="/shop/cart" (click)="toggleNav('/shop/cart')">Cart</a></li>
-                        <li [class.active]="url === '/shop/checkout' || url === '/shop/order' || url === '/shop/checkout'"><a>View Product</a>
-                            <ul class="header__menu__dropdown">
-                                <li [class.active]="url === '/shop/order'"><a routerLink="/shop/order" (click)="toggleNav('/shop/order')">Brand</a></li>
-                                <li [class.active]="url === '/shop/checkout'"><a routerLink="/shop/checkout" (click)="toggleNav('/shop/cart')">Category</a></li>
-                                <li [class.active]="url === '/shop/checkout'"><a routerLink="/shop/checkout" (click)="toggleNav('/shop/checkout')">Vendors</a></li>
-                            </ul>
-                        </li>
-                        <li [class.active]="url === '/shop/order'"><a routerLink="/shop/order" (click)="toggleNav('/shop/order')">Order</a></li>
-                        <li *ngIf="customerDetails != null" [class.active]="url === '/shop/profile' || url === '/shop/customer-login' "><a routerLink="/shop/landing" (click)="toggleNav('/shop/landing')">My Profile</a></li>
-                        <li *ngIf="customerDetails == null" [class.active]="url === '/shop/customer-login' "><a routerLink="/shop/customer-login" (click)="toggleNav('/shop/customer-login')">Login</a></li>
+                    <ul style=" text-align:center;">
+                        <li [class.active]="url === '/landing'"><a  (click)="checkNav('/landing');toggleNav('/landing')">Home</a></li>
+                        <li [class.active]="url === '/cart'"><a  (click)="checkNav('/cart');toggleNav('/cart')">Cart</a></li>
+                        <li [class.active]="url === '/order'"><a  (click)="checkNav('/order');toggleNav('/order')">Order</a></li>
+                        <li *ngIf="customerDetails != null" [class.active]="url === '/profile' || url === '/login' "><a  (click)="checkNav('/landing');toggleNav('/landing')">My Profile</a></li>
+                        <li *ngIf="customerDetails == null" [class.active]="url === '/login' "><a (click)="checkNav('/login');toggleNav('/login')">Login</a></li>
 
                     </ul>
                 </nav>
@@ -29,8 +22,8 @@
             <div class="col-lg-3">
                 <div class="header__cart">
                     <ul>
-                        <li *ngIf="customerDetails != null"><a routerLink="/shop/landing" (click)="resetCustomerCart();"><i class="fa fa-sign-out"></i></a></li>
-                        <li><a routerLink="/shop/cart"><i class="fa fa-shopping-bag"></i> <span>{{cartItemsCount}}</span></a></li>
+                        <li *ngIf="customerDetails != null"><a routerLink="/landing" (click)="resetCustomerCart();"><i class="fa fa-sign-out"></i></a></li>
+                        <li><a routerLink="/cart"><i class="fa fa-shopping-bag"></i> <span>{{cartItemsCount}}</span></a></li>
                     </ul>
                     <div class="header__cart__price">Total: <span>LKR {{cartItemTotal}}</span></div>
                 </div>
@@ -50,12 +43,12 @@
             <div class="col-lg-3 col-md-6 col-sm-6 ">
                 <div class="footer__about ">
                     <div class="footer__about__logo ">
-                        <a href="../shop/landing "><img src="/assets/images/logo.png" alt=" "></a>
+                        <a href="../landing "><img src="/assets/images/logo.png" alt=" "></a>
                     </div>
                     <ul>
                         <li>Address: 168/3 Ward Place, Colombo 07</li>
                         <li>Phone: +94 76 902 7668</li>
-                        <li>Email: info@day2day.com</li>
+                        <li>Email: info@vistos.com</li>
                     </ul>
                 </div>
             </div>
@@ -64,12 +57,10 @@
                     <h6>More Information</h6>
                     <ul>
                         <li><a href="# ">About Us</a></li>
-                        <li><a href="# ">About Our Shop</a></li>
-                        <li><a href="# ">Secure Shopping</a></li>
+                        <li><a href="# ">Our Chefs</a></li>
+                        <li><a href="# ">Our Branches</a></li>
                         <li><a href="# ">Delivery infomation</a></li>
-                        <li><a href="# ">Testimonials</a></li>
-                        <li><a href="# ">Become a Vendor</a></li>
-                        <li><a href="# ">Our Vendors</a></li>
+                        <li><a href="# ">Reviews</a></li>
 
                     </ul>
                     <ul>
@@ -108,7 +99,7 @@
                             Copyright &copy;
                             <script>
                                 document.write(new Date().getFullYear());
-                            </script> All rights reserved | This site is developed by Team Enigma
+                            </script> All rights reserved | This site is developed by Synergen TEST
 
                         </p>
                     </div>
