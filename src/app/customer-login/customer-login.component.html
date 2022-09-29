@@ -14,12 +14,20 @@
 </section>
 <!-- Breadcrumb Section End -->
 
+<div class="row" *ngIf="loading" style="height: 400px; ">
+    <div class="col-md-12 center loading-sm" style="height:100%;">
+        <img src="/assets/images/loading.gif" width="80" style="display: block;margin-left: auto;margin-right: auto;">
+    </div>
+</div>
+
 <!-- Login Section Begin -->
-<section  *ngIf="userlogged" class="shoping-cart spad">
+<section  *ngIf="userlogged && !loading" class="shoping-cart spad">
     <div class="container">
         <div class="row">
-            <div style="text-align: center;" class="col-sm-12">
-                <a style="color: #28b0d9;" class="hh" (click)="onclickLoggedUser()">Don't have an account. Register</a>
+            <div style="text-align: center;" class="col-sm-12 mb-2">
+                <a style="color: #28b0d9;" class="hh" >Don't have an account? &nbsp; &nbsp;</a>
+                <span class="badge badge-primary badge-pill p-2 ml-2" (click)="onclickLoggedUser()">Register</span>
+                            
             </div>
         </div>
         <div class="row">
@@ -38,7 +46,7 @@
                         <div class="checkout__input">
                             <p>Account Password<span>*</span></p>
                             <input type="password" [(ngModel)]="password" [readOnly]="disabledForm">
-                            <p *ngIf="passwordInvalid && userExist"><span>Password Doesn't Match for registered User</span></p>
+                            <p *ngIf="passwordInvalid"><span>Password Doesn't Match for registered User</span></p>
 
                         </div>
                     </div>
@@ -67,12 +75,13 @@
 <!-- Login Section End -->
 
 <!-- Registration Section Begin -->
-<section *ngIf="!userlogged" class="shoping-cart spad">
+<section *ngIf="!userlogged && !loading" class="shoping-cart spad">
    
     <div class="container">
         <div class="row">
-            <div style="text-align: center;" class="col-sm-12">
-                <a style="color: #28b0d9;"  class="hh" (click)="onclickLoggedUser()">Already have account. LOGIN</a>
+            <div style="text-align: center;" class="col-sm-12 mb-2">
+                <a style="color: #28b0d9;"  class="hh">Already have account? &nbsp; &nbsp;</a>
+                <span class="badge badge-primary badge-pill p-2 ml-2"  (click)="onclickLoggedUser()">Login</span>
             </div>
         </div>
         <form class="form-sample" [formGroup]="customerForm">

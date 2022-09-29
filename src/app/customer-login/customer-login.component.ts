@@ -17,13 +17,13 @@ export class CustomerLoginComponent {
   
   // @ViewChild('f') signin: NgForm;
 
+  loading   : boolean = false; //loading
 
-  usernameNotFound = false;
-  passwordIncorrect = false;
-  inactiveLogin = false;
+  usernameNotFound = false;//validation
+  passwordIncorrect = false;//validation
+  inactiveLogin = false;//validation
 
-  userlogged = false;
-  userExist   : boolean = false; //userExist
+  userlogged = false; //bool to check in user logged
   passwordInvalid : boolean = false; //passwordInvalid
   customerForm : FormGroup;
 
@@ -69,6 +69,7 @@ export class CustomerLoginComponent {
   
   
   loginSubmit(){
+    this.loading = true;
 
     if(this.password != null && this.contactNo != null){
       let customerData = {
@@ -76,7 +77,8 @@ export class CustomerLoginComponent {
         'password'  : this.password
       }
       this.customerLoginService.authenticate(customerData).subscribe((response) => {
-        console.log(response);
+      setTimeout(() => { this.loading = false; }, 1500);
+
         if(response['code'] === 200){//success
 
           console.log("response");
@@ -123,6 +125,7 @@ export class CustomerLoginComponent {
         }
       });
     }else{
+      this.loading = false;
 
       Swal.fire(
         'Login Error!',
@@ -134,6 +137,7 @@ export class CustomerLoginComponent {
 
   //Register Customer
   registerCustomer(){
+    this.loading = true;
 
     if(this.customerForm.value.name != null && this.customerForm.value.password != null && this.customerForm.value.contactNo != null &&this.customerForm.value.email != null &&this.customerForm.value.address != null){
       
@@ -148,15 +152,17 @@ export class CustomerLoginComponent {
       console.log("this.customerForm");
       console.log(this.customerForm);
       this.customerLoginService.register(customerData).subscribe((response) => {
+      setTimeout(() => { this.loading = false; }, 1500);
+
         console.log(response);
         if(response['code'] === 200){//success
           Swal.fire(
             'Success',
             '',
-            'warning'
+            'success'
           )
 
-          this.localStorageService.setData(response['user']);
+          this.localStorageService.setData(response["regUser"]);
           this.customerDetails = this.localStorageService.getData();
           this.disabledForm = true;
           console.log("his.localStorageService.setData(response['customer'][0]);");
@@ -176,6 +182,8 @@ export class CustomerLoginComponent {
         }
       });
     }else{
+      this.loading = false;
+
       Swal.fire(
         'Registration Error!',
         'Please fill required fields!',

@@ -19,149 +19,9 @@
         <div class="checkout__form">
             <h4>Billing Details</h4>
             <form >
-                <!-- <form [formGroup]="customerForm"> -->
                 <div class="row">
                     <div class="col-lg-8 col-md-6">
-                        <ng-container *ngIf="!disabledForm">
-                            <div class="row mb-4">
-                                <span class="badge badge-primary badge-pill p-3" *ngIf="registrationView" (click)="toggleregistrationView()">Already have an account</span>
-                                <span class="badge badge-primary badge-pill p-3" *ngIf="!registrationView" (click)="toggleregistrationView()">Register as New User</span>
-                            </div>
-                            <div class="row">
-                                <div class="col-lg-6">
-                                    <div class="checkout__input">
-                                        <p style="margin-bottom:1px;">Username (Email)<span *ngIf="(customerForm.get('email').value == '' || customerForm.get('email').value == null)"> *</span></p>
-                                        <label class="col-sm-12 col-form-label text-danger " style=" font-size: 12px;" *ngIf="!customerForm.get('email').valid && !(customerForm.get('email').value == '' || customerForm.get('email').value == null)">
-                                            <i class="fa fa-info"></i> Invalid Email
-                                        </label>
-                                        <input type="email" formControlName="email" [(ngModel)]="UserNameEmail" (change)="checkCustomerByEmail()" [readOnly]="disabledForm">
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="checkout__input">
-                                        <p style="margin-bottom:1px;">Account Password<span *ngIf="(customerForm.get('password').value == '' || customerForm.get('password').value == null)"> *</span></p>
-                                        <input type="password" formControlName="password" [(ngModel)]="password" [readOnly]="disabledForm">
-                                        <p *ngIf="passwordInvalid && userExist"><span>Password Doesn't Match for registered User</span></p>
-
-                                    </div>
-                                </div>
-                            </div>
-                            <ng-container *ngIf="registrationView">
-                                <div class="row" *ngIf="!userExist || !disabledForm">
-                                    <div class="col-lg-6">
-                                        <div class="checkout__input">
-                                            <p style="margin-bottom:1px;">Confirm Username(Email)<span *ngIf="(customerForm.get('confirmEmail').value == '' || customerForm.get('confirmEmail').value == null)"> * <span style="font-size:12px"> Required </span></span>
-                                            </p>
-                                            <label class="col-sm-12 col-form-label text-danger " style=" font-size: 12px;" *ngIf="!(customerForm.get('email').value == customerForm.get('confirmEmail').value) && !(customerForm.get('email').value == '' || customerForm.get('email').value == null)">
-                                                <i class="fa fa-info"></i> Confirm User name doesn't match
-                                            </label>
-                                            <input type="email" formControlName="confirmEmail">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <div class="checkout__input">
-                                            <p style="margin-bottom:1px;">Confirm Account Password<span *ngIf="(customerForm.get('confirmPassword').value == '' || customerForm.get('confirmPassword').value == null)"> * <span style="font-size:12px"> Required </span></span>
-                                            </p>
-                                            <label class="col-sm-12 col-form-label text-danger " style=" font-size: 12px;" *ngIf="!(customerForm.get('password').value == customerForm.get('confirmPassword').value )&& !(customerForm.get('password').value == '' || customerForm.get('password').value == null)">
-                                                <i class="fa fa-info"></i> Confirm Password doesn't match
-                                            </label>
-                                            <input type="password" formControlName="confirmPassword">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row" *ngIf="!userExist || !disabledForm">
-                                    <div class="col-lg-6">
-                                        <div class="checkout__input">
-                                            <p style="margin-bottom:1px;">First Name<span *ngIf="(customerForm.get('firstName').value == '' || customerForm.get('firstName').value == null)"> * <span style="font-size:12px"> Required </span></span>
-                                            </p>
-                                            <label class="col-sm-12 col-form-label text-danger " style=" font-size: 12px;" *ngIf="!customerForm.get('firstName').valid && !(customerForm.get('firstName').value == '' || customerForm.get('firstName').value == null)">
-                                                <i class="fa fa-info"></i> Name cannot contain special characters or empty space
-                                            </label>
-                                            <input type="text" formControlName="firstName">
-
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <div class="checkout__input">
-                                            <p style="margin-bottom:1px;">Last Name<span *ngIf="(customerForm.get('lastName').value == '' || customerForm.get('lastName').value == null)"> * <span style="font-size:12px"> Required </span></span>
-                                            </p>
-                                            <label class="col-sm-12 col-form-label text-danger " style=" font-size: 12px;" *ngIf="!customerForm.get('lastName').valid && !(customerForm.get('lastName').value == '' || customerForm.get('lastName').value == null)">
-                                                <i class="fa fa-info"></i> Name cannot contain special characters or empty space
-                                            </label>
-                                            <input type="text" formControlName="lastName">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="checkout__input" *ngIf="!userExist || !disabledForm">
-                                    <p style="margin-bottom:1px;">Address<span *ngIf="(customerForm.get('address').value == '' || customerForm.get('address').value == null)"> * <span style="font-size:12px"> Required </span></span>
-                                    </p>
-                                    <input type="text" formControlName="address" placeholder="Street Address" class="checkout__input__add">
-                                    <input type="text" formControlName="houseNo" placeholder="House No, Apartment, suite, unite ect (optinal)">
-                                </div>
-                                <div class="checkout__input" *ngIf="!userExist || !disabledForm">
-                                    <p style="margin-bottom:1px;">Town/City<span *ngIf="(customerForm.get('town').value == '' || customerForm.get('town').value == null)"> * <span style="font-size:12px"> Required </span></span>
-                                    </p>
-                                    <input type="text" formControlName="town">
-                                </div>
-                                <div class="row" *ngIf="!userExist || !disabledForm">
-                                    <div class="col-lg-6">
-                                        <div class="checkout__input">
-                                            <p style="margin-bottom:1px;">NIC<span *ngIf="(customerForm.get('nic').value == '' || customerForm.get('nic').value == null)"> * <span style="font-size:12px"> Required </span></span>
-                                            </p>
-                                            <label class="col-sm-12 col-form-label text-danger " style=" font-size: 12px;" *ngIf="!customerForm.get('nic').valid && !(customerForm.get('nic').value == '' || customerForm.get('nic').value == null)">
-                                                <i class="fa fa-info"></i> Invalid NIC Format
-                                            </label>
-                                            <input type="text" formControlName="nic">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <div class="checkout__input">
-                                            <p style="margin-bottom:1px;">Phone<span *ngIf="(customerForm.get('contactNo').value == '' || customerForm.get('contactNo').value == null)"> * <span style="font-size:12px"> Required </span></span>
-                                            </p>
-                                            <label class="col-sm-12 col-form-label text-danger " style=" font-size: 12px;" *ngIf="!customerForm.get('contactNo').valid && !(customerForm.get('contactNo').value == '' || customerForm.get('contactNo').value == null)">
-                                                <i class="fa fa-info"></i> Invalid Contact No Format
-                                            </label>
-                                            <input type="text" formControlName="contactNo" placeholder="714455778">
-                                        </div>
-                                    </div>
-                                    <!-- <div class="col-lg-6">
-                                        <div class="checkout__input">
-                                            <p style="margin-bottom:1px;" >Email<span> *</span></p>
-                                            <input type="text">
-                                        </div>
-                                    </div> -->
-                                </div>
-                                <div class="row" *ngIf="!userExist || !disabledForm">
-                                    <div class="col-lg-3">
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <div class="checkout__input">
-                                            <button type="button" class="site-btn" (click)="create();">Register Customer</button>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-3">
-                                    </div>
-
-                                </div>
-                            </ng-container>
-                            <ng-container *ngIf="!registrationView">
-                                <div class="row">
-                                    <div class="col-lg-3">
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <div class="checkout__input">
-                                            <button type="button" class="site-btn" style="width:100%;" (click)="loginSubmit();">Login</button>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-3">
-                                    </div>
-
-                                </div>
-                            </ng-container>
-                        </ng-container>
-
-
-
+                        
                     </div>
                     <div class="col-lg-4 col-md-6">
                         <div class="checkout__order">
@@ -220,16 +80,11 @@
                                 </div>
                             </div>
 
-                            <!-- <button type="button" class="site-btn" (click)="createOrder();">PLACE ORDER</button> -->
                             <button type="button" class="site-btn" >PLACE ORDER</button>
                         </div>
                     </div>
                 </div>
             </form>
-
-            <!-- <button type="button" id="payhere-payment">PayHere Pay</button>
-            <button type="submit" id="payhere-payment">PayHere Pay 1</button> -->
-            <!-- <button type="button" (click)="callCheckout();">PayHere Pay 2</button> -->
         </div>
     </div>
 </section>

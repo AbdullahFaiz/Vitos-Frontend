@@ -41,15 +41,21 @@ export class CartService {
 
     // Remove Cart data
     public removeCartData() {
-        window.localStorage.removeItem('shopping-cart-data');
+        window.localStorage.removeItem('vitos-cart-data');
     }
 
     //set Cart data
     setCartData(data:any):void{
-        window.localStorage.setItem('shopping-cart-data',JSON.stringify(data));
+        window.localStorage.setItem('vitos-cart-data',JSON.stringify(data));
     }
     getCartData():any{
-        return JSON.parse(window.localStorage.getItem('shopping-cart-data'));
+        return JSON.parse(window.localStorage.getItem('vitos-cart-data'));
+    }
+
+    createOrder(order : any){
+        return this.httpClient.post(this.apiUrl+"/order", order, this.httpOptions).pipe(
+            catchError(this.handleError)
+        );
     }
 
 }

@@ -18,52 +18,8 @@ export class LandingComponent implements OnInit {
   loading   : boolean = false; //loading
   pizzaList = [];
   tempPizzaList = [];
-  pizzaList2 = [
-    {
-      "pizzaId"   : 1,
-      "pizzaDescription" : "apple",
-      "cartQuantity"    : 3,
-      "brand":{"description" : "orange",},
-      "unitPrice"   : 130,
-      "pizzaImage1" : "https://static.toiimg.com/thumb/53110049.cms?width=1200&height=900"
-    },
-    {
-      "pizzaId"   : 2,
-      "pizzaDescription" : "tesgt",
-      "cartQuantity"    : 3,
-      "brand":{"description" : "rose",},
-      "quantity"    : 1,
-      "unitPrice" : 110,
-      "pizzaImage1" : "https://static.toiimg.com/photo/msid-87930581/87930581.jpg?211826"
-    },
-    {
-      "pizzaId"   : 3,
-      "pizzaDescription" : "apfffffple",
-      "cartQuantity"    : 3,
-      "brand":{"description" : "banana",},
-      "quantity"    : 2.33,
-      "unitPrice" : 900,
-      "pizzaImage1" : "https://static.toiimg.com/thumb/53110049.cms?width=1200&height=900"
-    },
-    {
-      "pizzaId"   : 4,
-      "pizzaDescription" : "rice",
-      "cartQuantity"    : 3,
-      "brand":{"description" : "apple",},
-      "quantity"    : 10,
-      "unitPrice" : 130,
-      "pizzaImage1" : "https://static.toiimg.com/photo/msid-87930581/87930581.jpg?211826"
-    }
-  ];
-  temppizzaList = [];
-
-  cartItemsCount = 0;
-
-  
   customerDetails = null;
 
-  // items = [];
-  // pageOfItems: Array<any>;
 
   constructor(
     private localStorageService: LocalStorageService,
@@ -72,18 +28,13 @@ export class LandingComponent implements OnInit {
     private router: Router,) {}
 
   ngOnInit() {
-    // this.items = Array(150).fill(0).map((x, i) => ({ id: (i + 1), name: `Item ${i + 1}`}));
     this.checkLogin();
     this.getPizzaByCategory();
   }
 
-  // onChangePage(pageOfItems: Array<any>) {
-  //     // update current page of items
-  //     this.pageOfItems = pageOfItems;
-  // }
+ 
 
   getUrl(url){
-    // console.log("url("+url+")");
     return "url("+url+")";
   }
   
@@ -129,16 +80,7 @@ export class LandingComponent implements OnInit {
     if(this.customerDetails != null){
 
       let cartDT = this.cartService.getCartData();
-      console.log("cartDT");
-      console.log(cartDT);
-      let quantityCheck = false;
-      // for(let x of this.temppizzaList){
-      //   if (x.quantity >= 1){
-      //       quantityCheck = true;   
-      //   }
-      // }
-      console.log(pizza)
-      console.log(pizza.quantity)
+      
       if(pizza.quantity >= 1){
         let prdt = {
           "pizzaId"   : pizza.pizzaId,
@@ -156,8 +98,6 @@ export class LandingComponent implements OnInit {
         console.log("cartDT - final pizzaList");
         console.log(cartDT);
         
-        // this.cartItemsCount = cartDT.length;
-        console.log(this.cartItemsCount);
         swal.fire("Pizza added to cart","", "success");
 
       }else{
@@ -170,13 +110,4 @@ export class LandingComponent implements OnInit {
     }
   }
   
-  // subQuantity(pizza){
-  //   console.log(pizza);
-  //   pizza.quantity -= 1;
-  // }
-
-  // addQuantity(pizza){
-  //   console.log(pizza);
-  //   pizza.quantity += 1;
-  // }
 }

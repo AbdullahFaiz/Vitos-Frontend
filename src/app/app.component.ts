@@ -28,6 +28,7 @@ export class AppComponent {
   subscribeEmail = null;
   customerDetails = null;
   ngOnInit() {
+    this.testSubscription();
     console.log("window.location.pathname");
     const source = interval(2000);
     this.getCartDetails();
@@ -128,13 +129,8 @@ export class AppComponent {
     this.cartService.setCartData(null);
   }
   checkLogin(){
-    // console.log(this.customerDetails);
-
     this.customerDetails = this.localStorageService.getData();
-    if(this.customerDetails != null){
-      // console.log(this.customerDetails);
-
-    }
+    
 
   }
 }
