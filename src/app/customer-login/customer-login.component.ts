@@ -2,8 +2,6 @@ import { Component, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
-import { CartService } from '../cart/cart.service';
-import { CheckoutService } from '../checkout/checkout.service';
 import { LocalStorageService } from '../common/local-storage/local-storage.service';
 import { CustomerLoginService } from './customer-login.service';
 
@@ -37,8 +35,6 @@ export class CustomerLoginComponent {
     private customerLoginService: CustomerLoginService,
     private localStorageService: LocalStorageService,
     private router: Router,
-    private checkoutService: CheckoutService,
-    private cartService: CartService,
     
     ) {}
 

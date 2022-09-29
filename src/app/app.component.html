@@ -13,21 +13,25 @@
                         <li [class.active]="url === '/landing'"><a  (click)="checkNav('/landing');toggleNav('/landing')">Home</a></li>
                         <li [class.active]="url === '/cart'"><a  (click)="checkNav('/cart');toggleNav('/cart')">Cart</a></li>
                         <!-- <li [class.active]="url === '/order'"><a  (click)="checkNav('/order');toggleNav('/order')">Order</a></li> -->
-                        <li *ngIf="customerDetails == null" [class.active]="url === '/login' "><a (click)="checkNav('/login');toggleNav('/login')">Login/Register</a></li>
+                        <li *ngIf="customerDetails == null" [class.active]="url === '/login' "><a (click)="checkNav('/login');toggleNav('/login')">Login / Register</a></li>
+                        <li *ngIf="customerDetails != null" [class.active]="url === '/login' "><a (click)="logOut()">Log Out</a></li>
 
                     </ul>
                 </nav>
             </div>
             <div class="col-lg-4">
                 <div class="header__cart">
-                    <div class="header__cart__price" *ngIf="customerDetails != null">
-                        Welcome <span>{{customerDetails.name}} &nbsp;</span>
-                    </div>
+                    
                     <ul>
-                        <li *ngIf="customerDetails != null"><a routerLink="/landing" (click)="resetCustomerCart();"><i class="fa fa-sign-out"></i></a></li>
                         <li><a (click)="checkNav('/cart');toggleNav('/cart')"><i class="fa fa-shopping-bag"></i> <span>{{cartItemsCount}}</span></a></li>
                     </ul>
                     <div class="header__cart__price">Total: <span>LKR {{cartItemTotal}}</span></div>
+                    <div class="header__cart__price" *ngIf="customerDetails != null">
+                        &nbsp; | Welcome <span>{{customerDetails.name}} &nbsp;</span>
+                    </div>
+                    <ul>
+                        <li *ngIf="customerDetails != null"><a routerLink="/landing" (click)="logOut();"><i class="fa fa-sign-out"></i></a></li>
+                    </ul>
                 </div>
             </div>
 

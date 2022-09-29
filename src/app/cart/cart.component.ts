@@ -37,6 +37,10 @@ export class CartComponent {
     this.userDetails = this.localStorageService.getData();
     if(this.userDetails != null){
       this.userlogged = true;
+    }else{
+
+      Swal.fire("User not logged!","Please login to proceed", "warning");
+      setTimeout(() => { this.router.navigate(["/landing"]) }, 1000);
     }
     console.log(this.userDetails);
   }
@@ -66,11 +70,10 @@ export class CartComponent {
   
   createOrder(){
     this.loading = true;
-    let formData = new FormData();
     let data : object;
     
     
-    if(this.userDetails != null || this.cartDetails != null){
+    if(this.userDetails != null && this.cartDetails != null){
 
       let pizzas = [];
 
@@ -115,7 +118,7 @@ export class CartComponent {
 
     }else{
       this.loading = false;
-      Swal.fire("Login invalid","Please Login or Register an account", "warning");
+      Swal.fire("Cart Empty","Add pizza to cart to proceed", "warning");
 
 
     }

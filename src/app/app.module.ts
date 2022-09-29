@@ -7,8 +7,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CartComponent } from './cart/cart.component';
 import { CartService } from './cart/cart.service';
-import { CheckoutComponent } from './checkout/checkout.component';
-import { CheckoutService } from './checkout/checkout.service';
 import { LocalStorageService } from './common/local-storage/local-storage.service';
 import { CustomerLoginComponent } from './customer-login/customer-login.component';
 import { CustomerLoginService } from './customer-login/customer-login.service';
@@ -20,7 +18,6 @@ import { LandingService } from './landing/landing.service';
     AppComponent,
     LandingComponent,
     CartComponent,
-    CheckoutComponent,
     CustomerLoginComponent
   ],
   imports: [
@@ -33,7 +30,6 @@ import { LandingService } from './landing/landing.service';
   providers: [
     LocalStorageService,
     CartService,
-    CheckoutService,
     LandingService,
     CustomerLoginService
   ],

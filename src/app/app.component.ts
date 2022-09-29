@@ -124,7 +124,7 @@ export class AppComponent {
       this.cartItemTotal = 0;
     }
   }
-  resetCustomerCart(){
+  logOut(){
     this.localStorageService.setData(null);
     this.cartService.setCartData(null);
   }

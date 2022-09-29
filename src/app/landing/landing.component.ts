@@ -102,7 +102,7 @@ export class LandingComponent implements OnInit {
 
       }else{
         
-        swal.fire("Quantity Max !","You quantity exceeds more than availabe", "warning");
+        swal.fire("Not Available !","Your quantity exceeds more than availabe", "warning");
       }
     }else{
       swal.fire("Not Logged !","Please login to add pizza to cart", "warning");

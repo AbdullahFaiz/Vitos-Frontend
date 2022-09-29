@@ -1,5 +1,5 @@
 <!-- Breadcrumb Section Begin -->
-<section class="breadcrumb-section set-bg" [style.background-image]="'url(/assets/organi/img/customer-login.png)'">
+<section class="breadcrumb-section set-bg" [style.background-image]="'url(/assets/organi/img/checkout2.jpg)'">
     <div class="container">
         <div class="row">
             <div class="col-lg-12 text-center">
@@ -24,9 +24,10 @@
 <section  *ngIf="userlogged && !loading" class="shoping-cart spad">
     <div class="container">
         <div class="row">
-            <div style="text-align: center;" class="col-sm-12 mb-2">
-                <a style="color: #28b0d9;" class="hh" >Don't have an account? &nbsp; &nbsp;</a>
-                <span class="badge badge-primary badge-pill p-2 ml-2" (click)="onclickLoggedUser()">Register</span>
+            <div style="text-align: center;" class="col-sm-12 mb-4">
+                <!-- <a style="color: #28b0d9;" class="hh" >Don't have an account? &nbsp; &nbsp;</a> -->
+                <span class="badge badge-primary badge-pill p-2 ml-2" (click)="onclickLoggedUser()">Don't have an account? </span>
+                <span style="    position: absolute;left: 0;bottom: -15px; right: 0; height: 4px; width: 80px;background: #28b0d9;margin: 0 auto;"></span>
                             
             </div>
         </div>
@@ -79,9 +80,10 @@
    
     <div class="container">
         <div class="row">
-            <div style="text-align: center;" class="col-sm-12 mb-2">
-                <a style="color: #28b0d9;"  class="hh">Already have account? &nbsp; &nbsp;</a>
-                <span class="badge badge-primary badge-pill p-2 ml-2"  (click)="onclickLoggedUser()">Login</span>
+            <div style="text-align: center;" class="col-sm-12 mb-4">
+                <!-- <a style="color: #28b0d9;"  class="hh">Already have account? &nbsp; &nbsp;</a> -->
+                <span class="badge badge-primary badge-pill p-2 ml-2"  (click)="onclickLoggedUser()">Already have account?</span>
+                <span style="    position: absolute;left: 0;bottom: -15px; right: 0; height: 4px; width: 80px;background: #28b0d9;margin: 0 auto;"></span>
             </div>
         </div>
         <form class="form-sample" [formGroup]="customerForm">
