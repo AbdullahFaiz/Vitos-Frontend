@@ -94,7 +94,7 @@ export class CartComponent {
       console.log(data);
       
       this.cartService.createOrder(data).subscribe((response) => {
-        setTimeout(() => { this.loading = false; }, 2500);
+        setTimeout(() => { this.loading = false; }, 4000);
         
         if(response['code'] == '401'){//validation error
           response["validationErrors"].forEach( (currentValue, index) => {
